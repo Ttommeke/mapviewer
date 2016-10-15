@@ -13,7 +13,7 @@ $.getJSON("map.json", function(data) {
 scene.add(Light.createDirectionalLight(Light.WHITE, Light.FULL_STRENGTH, new THREE.Vector3( 1, 1, 1)))
 scene.add(Light.createHemisphereLight(0xFFFFFF, 0xFFFFFF, 1));
 
-camera.position.z = 5;
+camera.position.z = 10;
 camera.position.x = 2;
 camera.position.y = 1;
 
