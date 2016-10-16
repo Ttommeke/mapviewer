@@ -11,6 +11,6 @@ Light.createDirectionalLight = function(color, strength, pos ) {
 }
 
 Light.createHemisphereLight = function( colorSky, colorGround, strength) {
-    var hemiLight = new THREE.AmbientLight( colorSky, colorGround, strength);
+    var hemiLight = new THREE.HemisphereLight( colorSky, colorGround, strength);
     return hemiLight;
 };

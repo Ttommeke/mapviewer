@@ -17,7 +17,7 @@ Map.generateMapFromNumberMap = function(numMap) {
     for (var z = 0; z < numMap.length; z++) {
         bufMap.push([]);
         for (var x = 0; x < numMap[z].length; x++) {
-            bufMap[z].push({ id: numMap[z][x], entity: Entity.generateEntity(numMap[z][x], x, -0.5, z) });
+            bufMap[z].push({ id: numMap[z][x], entity: Entity.generateEntity(numMap[z][x], x, z) });
         }
     }
 
