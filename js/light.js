@@ -14,3 +14,12 @@ Light.createHemisphereLight = function( colorSky, colorGround, strength) {
     var hemiLight = new THREE.HemisphereLight( colorSky, colorGround, strength);
     return hemiLight;
 };
+
+Light.generateLight = function(light) {
+
+	if (light.type === "DirectionalLight") {
+		return Light.createDirectionalLight(Light.WHITE, light.strength, new THREE.Vector3( light.pos.x, light.pos.y, light.pos.z));
+	} else if (light.type === "HemisphereLight") {
+		return Light.createHemisphereLight(Utils.stringHexToHex( light.sky ), Utils.stringHexToHex( light.ground ), light.strength);
+	}
+};

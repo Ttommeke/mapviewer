@@ -1,6 +1,11 @@
 {
+	"clearcolor": "0xabf3fc",
+	"lights": [
+		{ "type": "DirectionalLight", "strength": 0.6, "pos": { "x": 1, "y": 0.8, "z": 0.5 } },
+		{ "type": "HemisphereLight", "strength": 0.4, "ground": "0xFFFFFF", "sky": "0xFFFFFF" }
+	],
 	"map": [
-			[2,2,1,2],
+			[2,2,1,2,1,1,1,1,1,1,1,1,1],
 			[1,1,2,1],
 			[2,2,1,2],
 			[2,2,1,3],
