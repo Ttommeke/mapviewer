@@ -18,7 +18,7 @@ Light.createHemisphereLight = function( colorSky, colorGround, strength) {
 Light.generateLight = function(light) {
 
 	if (light.type === "DirectionalLight") {
-		return Light.createDirectionalLight(Light.WHITE, light.strength, new THREE.Vector3( light.pos.x, light.pos.y, light.pos.z));
+		return Light.createDirectionalLight(Light.WHITE, light.strength, new THREE.Vector3( light.position.x, light.position.y, light.position.z));
 	} else if (light.type === "HemisphereLight") {
 		return Light.createHemisphereLight(Utils.stringHexToHex( light.sky ), Utils.stringHexToHex( light.ground ), light.strength);
 	}
