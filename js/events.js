@@ -8,6 +8,18 @@ Events.keys = {
     "right": false
 };
 
+Events.mouse = {
+    "position": {
+        "x": 0,
+        "z": 0
+    }
+}
+
+Events.mouseMove = function(e) {
+    Events.mouse.position.x = (e.clientX/window.innerWidth - 0.5)*2;
+    Events.mouse.position.z = (e.clientY/window.innerHeight - 0.5)*2;
+}
+
 Events.keyDownEvent = function(e) {
     if (e.key == "ArrowUp") {
 		Events.keys.up = true;

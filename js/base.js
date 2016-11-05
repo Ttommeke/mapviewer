@@ -13,7 +13,8 @@ var render = function() {
 	var deltaTime = TimeClock.getDelta();
 
 	if (Player.player != undefined) {
-		Player.executeKeys(deltaTime);
+		Player.executeKeys(Player.player, deltaTime);
+		Player.turnTowardsMouse(Player.player, deltaTime);
 		Camera.moveCamera(Camera.camera, Player.player.position, deltaTime, Camera.speed);
 	}
 
