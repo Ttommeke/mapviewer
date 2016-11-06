@@ -16,8 +16,8 @@ Events.mouse = {
 }
 
 Events.mouseMove = function(e) {
-    Events.mouse.position.x = (e.clientX/window.innerWidth - 0.5)*2;
-    Events.mouse.position.z = (e.clientY/window.innerHeight - 0.5)*2;
+    Events.mouse.position.x = e.clientX - window.innerWidth/2;
+    Events.mouse.position.z = e.clientY - window.innerHeight/2;
 }
 
 Events.keyDownEvent = function(e) {

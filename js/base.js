@@ -15,7 +15,7 @@ var render = function() {
 	if (Player.player != undefined) {
 		Player.executeKeys(Player.player, deltaTime);
 		Player.turnTowardsVector(Player.player, Events.mouse.position);
-		Camera.moveCamera(Camera.camera, Player.player.position, deltaTime, Camera.speed);
+		Camera.moveCamera(Camera.camera, Utils.newVectorToNewVector(Player.player.position,1,Events.mouse.position), deltaTime, Camera.speed);
 	}
 
 	renderer.render( scene, Camera.camera );
@@ -35,6 +35,8 @@ $.getJSON("map.json", function(data) {
 
 	var emap = Map.generateMapFromNumberMap(data.map);
 	Map.loadMapInScene(emap, scene);
+
+	Map.map = emap;
 
 	renderer.setClearColor( Utils.stringHexToHex( data.clearcolor ), 1 );
 

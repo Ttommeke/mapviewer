@@ -1,6 +1,6 @@
 
 var Map = {
-
+    map: []
 };
 
 Map.loadMapInScene = function(map, scene) {

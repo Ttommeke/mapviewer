@@ -34,5 +34,5 @@ Player.executeKeys = function(player, deltaTime) {
 
     direction.applyAxisAngle(new THREE.Vector3(0,1,0), player.rotation.y - 3.1415/2);
 
-    Living.moveLiving(player, deltaTime, direction, player.speed);
+    Living.moveLivingWithCollisionCheck(player, deltaTime, direction, player.speed, Map.map);
 }
