@@ -8,9 +8,8 @@ Camera.moveCamera = function(camera, positionToMoveTo, deltaTime, speed) {
     var difference = new THREE.Vector3(0,0,0);
     difference.subVectors(positionToMoveTo, camera.position);
     difference.y = 0;
-
+    
     camera.position.addScaledVector(difference, speed * deltaTime);
-
 }
 
 Camera.setCameraPositionAndRotation = function(cameraToSet, cameraJson) {

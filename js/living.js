@@ -12,7 +12,8 @@ Living.moveLiving = function(living, deltaTime, direction, speed) {
 
 Living.generateLiving = function(living) {
     if (living.type = "human") {
-        var human = Entity.createCube( 0xFF0099, new THREE.Vector3(0.8,1.4,0.8), new THREE.Vector3(living.position.x, 0.7 ,living.position.z), living.rotation)
+        var human = Entity.createCube( 0xFF0099, new THREE.Vector3(0.8,1.4,0.8), living.position, living.rotation);
+        human.position.y = 0.7;
         human.speed = living.speed;
 
         return human;

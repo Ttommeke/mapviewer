@@ -1,13 +1,14 @@
 
-var Player = {
-    "player": undefined
-};
+var Player = {};
 
-Player.turnTowardsMouse = function(player, deltaTime) {
-    var mouseVector = new THREE.Vector3(Events.mouse.position.x, 0, Events.mouse.position.z);
+Player.turnTowardsVector = function(player, lookVector) {
+    var mouseVector = new THREE.Vector3(lookVector.x, 0, lookVector.z);
     var angleToMouse = mouseVector.angleTo(new THREE.Vector3(1,0,0));
 
-    if (Events.mouse.position.z > 0) {
+    if (isNaN(angleToMouse)) {
+        angleToMouse = 0;
+    }
+    if (lookVector.z > 0) {
         angleToMouse *= -1;
     }
 

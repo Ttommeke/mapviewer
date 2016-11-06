@@ -14,7 +14,7 @@ var render = function() {
 
 	if (Player.player != undefined) {
 		Player.executeKeys(Player.player, deltaTime);
-		Player.turnTowardsMouse(Player.player, deltaTime);
+		Player.turnTowardsVector(Player.player, Events.mouse.position);
 		Camera.moveCamera(Camera.camera, Player.player.position, deltaTime, Camera.speed);
 	}
 
@@ -25,8 +25,6 @@ var render = function() {
 }
 
 $.getJSON("map.json", function(data) {
-	var emap = Map.generateMapFromNumberMap(data.map);
-	Map.loadMapInScene(emap, scene);
 
 	Camera.speed = data.cameraSpeed;
 	Camera.setCameraPositionAndRotation(Camera.camera, data.cameras[0]);
@@ -35,11 +33,15 @@ $.getJSON("map.json", function(data) {
 		scene.add(Light.generateLight(light));
 	});
 
-	Player.player = Living.generateLiving(data.player);
-	scene.add(Player.player);
+	var emap = Map.generateMapFromNumberMap(data.map);
+	Map.loadMapInScene(emap, scene);
 
 	renderer.setClearColor( Utils.stringHexToHex( data.clearcolor ), 1 );
-});
 
-TimeClock.getDelta();
-render();
+	var player = Living.generateLiving(data.player);
+	scene.add(player);
+	Player.player = player;
+
+	TimeClock.getDelta();
+	render();
+});
