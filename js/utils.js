@@ -6,7 +6,6 @@ var Utils = {
 Utils.newVectorToNewVector = function(original, extra, direction) {
     var newV = new THREE.Vector3(0,0,0);
     newV.copy(original);
-    console.log(newV);
     var length = Math.sqrt(direction.x * direction.x + direction.z * direction.z) + 0.00000001;
 
     newV.x += extra * direction.x / length;
