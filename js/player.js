@@ -1,14 +1,17 @@
 
 var Player = {};
 
-Player.turnTowardsVector = function(player, lookVector) {
-    var mouseVector = new THREE.Vector3(lookVector.x, 0, lookVector.z);
+Player.lookTowardsPosition = function(player, lookVector) {
+    var mouseVector = lookVector.clone();
+    mouseVector.sub(player.position);
+    mouseVector.y = 0;
+
     var angleToMouse = mouseVector.angleTo(new THREE.Vector3(1,0,0));
 
     if (isNaN(angleToMouse)) {
         angleToMouse = 0;
     }
-    if (lookVector.z > 0) {
+    if (mouseVector.z > 0) {
         angleToMouse *= -1;
     }
 
@@ -19,16 +22,16 @@ Player.executeKeys = function(player, deltaTime) {
 
     var direction = new THREE.Vector3(0,0,0);
 
-    if (Events.keys.up) {
+    if (Events.keys.ArrowUp.isPressed()) {
         direction.z -= 1;
     }
-    if (Events.keys.down) {
+    if (Events.keys.ArrowDown.isPressed()) {
         direction.z += 1;
     }
-    if (Events.keys.left) {
+    if (Events.keys.ArrowLeft.isPressed()) {
         direction.x -= 1;
     }
-    if (Events.keys.right) {
+    if (Events.keys.ArrowRight.isPressed()) {
         direction.x += 1;
     }
 

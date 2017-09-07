@@ -3,13 +3,11 @@ var Utils = {
 
 };
 
-Utils.newVectorToNewVector = function(original, extra, direction) {
+Utils.addScalarVectorWitToOriginalVector = function(original, extra, direction) {
     var newV = new THREE.Vector3(0,0,0);
     newV.copy(original);
-    var length = Math.sqrt(direction.x * direction.x + direction.z * direction.z) + 0.00000001;
 
-    newV.x += extra * direction.x / length;
-    newV.z += extra * direction.z / length;
+    newV.addScaledVector(direction, extra);
 
     return newV;
 }
@@ -22,4 +20,14 @@ Utils.setXYZ = function( toCopyTo, toCopy) {
 
 Utils.stringHexToHex = function(stringHex) {
     return parseInt(stringHex, 16);
+};
+
+Utils.findObjectWithIDInList = function(id, list) {
+    for (var i = 0; i < list.length; i++) {
+        if (list[i].id == id) {
+            return list[i];
+        }
+    }
+
+    return undefined;
 };

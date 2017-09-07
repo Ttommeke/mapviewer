@@ -1,7 +1,8 @@
 
 var Camera = {
     "camera": new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 50 ),
-    "speed": 4
+    "speed": 4,
+    "cameraInitialInfo": {},
 };
 
 Camera.moveCamera = function(camera, positionToMoveTo, deltaTime, speed) {
@@ -15,4 +16,6 @@ Camera.moveCamera = function(camera, positionToMoveTo, deltaTime, speed) {
 Camera.setCameraPositionAndRotation = function(cameraToSet, cameraJson) {
     Utils.setXYZ(cameraToSet.position, cameraJson.position);
 	Utils.setXYZ(cameraToSet.rotation, cameraJson.rotation);
+
+    cameraToSet.rotation.order = "YXZ";
 }
