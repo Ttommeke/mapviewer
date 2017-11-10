@@ -35,6 +35,18 @@ Player.executeKeys = function(player, deltaTime) {
         direction.x += 1;
     }
 
+    if (Events.keys[" "].isPressed()) {
+        player.state.dancing = true;
+    } else {
+        player.state.dancing = false;
+    }
+
+    if (direction.x != 0 || direction.y != 0 || direction.z != 0) {
+        player.state.moving = true;
+    } else {
+        player.state.moving = false;
+    }
+
     direction.applyAxisAngle(new THREE.Vector3(0,1,0), player.rotation.y - 3.1415/2);
 
     Living.moveLivingWithCollisionCheck(player, deltaTime, direction, player.speed, Map.map);

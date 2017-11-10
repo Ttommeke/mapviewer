@@ -92,7 +92,17 @@ Living.moveLiving = function(living, deltaTime, direction, speed) {
     oriPos.x += direction.x/length * speed * deltaTime;
     oriPos.y += direction.y/length * speed * deltaTime;
     oriPos.z += direction.z/length * speed * deltaTime;
-}
+};
+
+Living.animateLiving = function(living, elapsedTime) {
+    if (living.state.moving) {
+        Animation.animations.move(living, elapsedTime);
+    } else if (living.state.dancing) {
+        Animation.animations.dance(living, elapsedTime);
+    } else {
+        Animation.animations.standStill(living, elapsedTime);
+    }
+};
 
 Living.generateLiving = function(living) {
     if (living.type = "human") {
@@ -100,6 +110,10 @@ Living.generateLiving = function(living) {
         human.position.y = 0.7;
         human.speed = living.speed;
         human.hitbox = living.hitbox;
+
+        human.state = {};
+        human.state.moving = false;
+        human.state.dancing = false;
 
         return human;
     }

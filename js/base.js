@@ -20,8 +20,6 @@ var moveMouseCube = function() {
 	}
 };
 
-
-
 var render = function() {
 	fpsCounter.begin();
 	var deltaTime = TimeClock.getDelta();
@@ -30,6 +28,7 @@ var render = function() {
 
 	if (Player.player != undefined) {
 		Player.executeKeys(Player.player, deltaTime);
+		Living.animateLiving(Player.player, TimeClock.elapsedTime);
 		Player.lookTowardsPosition(Player.player, mouseCube.position);
 
 		var direction = mouseCube.position.clone();
